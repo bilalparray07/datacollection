@@ -1,4 +1,5 @@
 // index.js
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -13,7 +14,7 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 // Replace 'your_database_url' with the actual connection string to your MongoDB database
-const databaseUrl = 'mongodb://localhost:27017/projectsmit';
+const databaseUrl = process.env.MONGO_URI;
 
 mongoose.connect(databaseUrl, {
   useNewUrlParser: true,
